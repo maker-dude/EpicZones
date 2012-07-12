@@ -55,10 +55,7 @@ public class EpicZoneDAL
         for (String fileName : fileNames)
         {
             EpicZone zone = Load(new File(file.getAbsolutePath() + File.separator + fileName));
-            if ((zone.getType() != EpicZone.ZoneType.GLOBAL) || (zone.getType() == EpicZone.ZoneType.GLOBAL && General.plugin.getServer().getWorld(zone.getWorld()) != null))
-            {
-                result.put(zone.getTag(), zone);
-            }
+            result.put(zone.getTag(), zone);
         }
 
         return result;
@@ -116,7 +113,7 @@ public class EpicZoneDAL
                 result.setEnterText(Util.getStringValueFromHashSet("entertext", root));
                 result.setExitText(Util.getStringValueFromHashSet("exittext", root));
                 result.setFloor(Util.getIntegerValueFromHashSet("floor", root));
-                result.setCeiling(Util.getIntegerValueFromHashSet("ceiling", root, 128));
+                result.setCeiling(Util.getIntegerValueFromHashSet("ceiling", root, 256));
                 result.setPVP(Util.getBooleanValueFromHashSet("pvp", root));
                 result.setFire(getFire(root));
                 result.setExplode(getExplode(root));
