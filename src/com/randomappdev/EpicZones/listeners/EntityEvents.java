@@ -38,6 +38,7 @@ import com.randomappdev.EpicZones.objects.EpicZonePlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.*;
@@ -155,7 +156,7 @@ public class EntityEvents implements Listener
                 EpicZone sancZone = General.GetZoneForPlayer(null, e.getLocation().getWorld().getName(), e.getLocation().getBlockY(), new Point(e.getLocation().getBlockX(), e.getLocation().getBlockZ()));
                 if ((sancZone != null && !sancZone.getSanctuary()) || sancZone == null)
                 {
-                    if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK)
+                    if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK || event.getCause() == EntityDamageEvent.DamageCause.PROJECTILE)
                     {
                         if (event instanceof EntityDamageByEntityEvent)
                         {
@@ -309,7 +310,10 @@ public class EntityEvents implements Listener
 
         boolean result = false;
 
-        if (entity instanceof Player)
+        if (entity instanceof Projectile)
+        {
+            result = isPlayer(((Projectile) entity).getShooter());
+        } else if (entity instanceof Player)
         {
             Player player = (Player) entity;
             if (General.getPlayer(player.getName()) != null)
