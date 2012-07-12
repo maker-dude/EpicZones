@@ -58,7 +58,7 @@ public class EpicZone
     private String name = "";
     private ZoneType type = ZoneType.POLY;
     private int floor = 0;
-    private int ceiling = 128;
+    private int ceiling = 256;
     private String world = "";
     private Polygon polygon = new Polygon();
     private Point center = new Point();
