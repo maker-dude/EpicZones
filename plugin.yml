@@ -1,0 +1,47 @@
+name: EpicZones
+main: com.randomappdev.EpicZones.EpicZones
+version: 0.36.1
+website: http://www.RandomAppDev.com
+author: jblaske
+description: >
+             Provides polygon based protection for your bukkit server.
+commands:
+  ezzone:
+    aliases: zone
+    description: Houses all of the commands for EpicZones.
+    usage: |
+           /<command> <subcommand> [Value] [Value] [Value]
+           Example: /<command> create [tag] - Creates a new zone with the provided tag.
+  ezreload:
+    aliases: reload
+    description: Reloads all of EpicZones configuration settings.
+    usage: |
+           /<command>
+           Example: /<command> - Reloads EpicZones.
+  ezwho:
+    aliases: [who, online, whois]
+    description: Provides a list of players that are on the server.
+    usage: |
+           /<command> [all]
+           Example: /<command> - Lists all players in your current zone.
+           Example: /<command> all - Lists all players on the server and shows what zone they are in.
+permissions:
+  epiczones.*:
+    description: Gives access to all EpicZones permissions.
+    children:
+      epiczones.admin: true
+      epiczones.ignoremapradius: true
+      epiczones.ignorepermissions: true
+      epiczones.who: true
+  epiczones.admin:
+    description: Allows a player to have admin access to EpicZones commands.
+    default: op
+  epiczones.ignoremapradius:
+    description: Allows a player to walk and build beyond the set radius of a world.
+    default: op
+  epiczones.ignorepermissions:
+    description: Allows a player to ignore building/destroying restrictions.
+    default: op
+  epiczones.who:
+    description: Allows a player to use the who command to see who is online and where they are.
+    default: true
