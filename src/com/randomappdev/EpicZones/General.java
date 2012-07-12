@@ -203,10 +203,12 @@ public class General
     public static void AddWorld(World world)
     {
         Log.Write("Adding World: " + world.getName().toLowerCase());
+
         if (myGlobalZones.get(world.getName().toLowerCase()) == null)
         {
 
             EpicZone newGlobal = new EpicZone();
+
 
             newGlobal.setTag(world.getName().toLowerCase());
             newGlobal.setName(world.getName());

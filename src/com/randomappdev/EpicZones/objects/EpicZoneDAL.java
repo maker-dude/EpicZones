@@ -55,10 +55,7 @@ public class EpicZoneDAL
         for (String fileName : fileNames)
         {
             EpicZone zone = Load(new File(file.getAbsolutePath() + File.separator + fileName));
-            if ((zone.getType() != EpicZone.ZoneType.GLOBAL) || (zone.getType() == EpicZone.ZoneType.GLOBAL && General.plugin.getServer().getWorld(zone.getWorld()) != null))
-            {
-                result.put(zone.getTag(), zone);
-            }
+            result.put(zone.getTag(), zone);
         }
 
         return result;
