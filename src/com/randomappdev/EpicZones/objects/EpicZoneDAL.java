@@ -116,7 +116,7 @@ public class EpicZoneDAL
                 result.setEnterText(Util.getStringValueFromHashSet("entertext", root));
                 result.setExitText(Util.getStringValueFromHashSet("exittext", root));
                 result.setFloor(Util.getIntegerValueFromHashSet("floor", root));
-                result.setCeiling(Util.getIntegerValueFromHashSet("ceiling", root, 128));
+                result.setCeiling(Util.getIntegerValueFromHashSet("ceiling", root, 256));
                 result.setPVP(Util.getBooleanValueFromHashSet("pvp", root));
                 result.setFire(getFire(root));
                 result.setExplode(getExplode(root));
