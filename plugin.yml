@@ -1,8 +1,9 @@
 name: EpicZones
 main: com.randomappdev.EpicZones.EpicZones
-version: 0.36.1
-website: http://www.RandomAppDev.com
+version: 0.37
+website: http://github.com/jblaske
 author: jblaske
+softdepend: [Vault]
 description: >
              Provides polygon based protection for your bukkit server.
 commands:
