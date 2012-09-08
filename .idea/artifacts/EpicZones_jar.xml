@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="EpicZones:jar">
+    <output-path>D:/Minecraft Stuff/Plugin Dev/plugins</output-path>
+    <root id="archive" name="EpicZones.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+      <element id="module-output" name="EpicZones" />
+    </root>
+  </artifact>
+</component>

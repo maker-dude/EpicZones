@@ -206,6 +206,12 @@ public class EZZoneInfo
                         messageText = "";
                     }
 
+                    if (zone.getEcon().getForSale())
+                    {
+                        messageText = ChatColor.YELLOW + "This zone is for sale by " + ChatColor.WHITE + zone.getEcon().getSeller() + ChatColor.YELLOW + " for " + ChatColor.WHITE + zone.getEcon().getPurchasePrice().intValue() + ChatColor.YELLOW + ".";
+                        Message.Send(sender, messageText);
+                    }
+
                     Message.Send(sender, Message_ID.Info_00039_Permissions);
                     for (String permKey : zone.getPermissions().keySet())
                     {

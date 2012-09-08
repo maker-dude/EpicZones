@@ -34,9 +34,7 @@ package com.randomappdev.EpicZones.commands;
 import com.randomappdev.EpicZones.General;
 import com.randomappdev.EpicZones.Message;
 import com.randomappdev.EpicZones.Message.Message_ID;
-import com.randomappdev.EpicZones.integration.PermissionsManager;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class EZReload implements CommandHandler
 {
@@ -44,16 +42,21 @@ public class EZReload implements CommandHandler
     public boolean onCommand(String command, CommandSender sender, String[] args)
     {
 
-        if ((sender instanceof Player && (PermissionsManager.hasPermission((Player) sender, "epiczones.admin")) || sender.isOp()) || !(sender instanceof Player))
+        if (Util.isAdmin(sender, "epiczones.admin", true))
         {
+
             General.plugin.setupPermissions();
             General.plugin.setupEpicZones();
             General.plugin.setupHeroChat();
             General.plugin.setupSpout(General.plugin.getServer().getPluginManager());
             Message.Send(sender, Message_ID.Info_00015_Reloaded);
+
             return true;
+
         }
+
         return false;
+
     }
 
 }

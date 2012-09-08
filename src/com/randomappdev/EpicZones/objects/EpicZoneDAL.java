@@ -117,6 +117,7 @@ public class EpicZoneDAL
                 result.setPVP(Util.getBooleanValueFromHashSet("pvp", root));
                 result.setFire(getFire(root));
                 result.setExplode(getExplode(root));
+                result.setEcon(getEcon(root));
                 result.setSanctuary(Util.getBooleanValueFromHashSet("sanctuary", root));
                 result.setAllowEndermenPick(Util.getBooleanValueFromHashSet("endermenpick", root));
                 result.setFireBurnsMobs(Util.getBooleanValueFromHashSet("fireburnsmobs", root));
@@ -257,6 +258,21 @@ public class EpicZoneDAL
     }
 
     @SuppressWarnings("unchecked")
+    private static String getEcon(HashMap<String, Object> root)
+    {
+        String result = "";
+
+        HashMap<String, Object> econ = (HashMap<String, Object>) Util.getObjectValueFromHashSet("econ", root);
+
+        result += Util.getStringValueFromHashSet("forSale", econ) + ":";
+        result += Util.getStringValueFromHashSet("purchasePrice", econ) + ":";
+        result += Util.getStringValueFromHashSet("seller", econ) + ":";
+        result += Util.getStringValueFromHashSet("signLocation", econ);
+
+        return result;
+    }
+
+    @SuppressWarnings("unchecked")
     private static String getFire(HashMap<String, Object> root)
     {
         String result = "";
@@ -301,6 +317,13 @@ public class EpicZoneDAL
             explode.put("ghast", zone.getExplode().getGhast());
             explode.put("other", zone.getExplode().getOther());
             root.put("explode", explode);
+
+            Map<String, Object> econ = new TreeMap<String, Object>();
+            econ.put("forSale", zone.getEcon().getForSale());
+            econ.put("purchasePrice", zone.getEcon().getPurchasePrice());
+            econ.put("seller", zone.getEcon().getSeller());
+            econ.put("signLocation", zone.getEcon().getSignLocation());
+            root.put("econ", econ);
 
             Map<String, Object> fire = new TreeMap<String, Object>();
             fire.put("ignite", zone.getFire().getIgnite());

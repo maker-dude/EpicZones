@@ -33,11 +33,13 @@ package com.randomappdev.EpicZones.listeners;
 
 import com.randomappdev.EpicZones.*;
 import com.randomappdev.EpicZones.Message.Message_ID;
+import com.randomappdev.EpicZones.integration.EconIntegration;
 import com.randomappdev.EpicZones.integration.EpicSpout;
 import com.randomappdev.EpicZones.integration.PermissionsManager;
 import com.randomappdev.EpicZones.objects.EpicZone;
 import com.randomappdev.EpicZones.objects.EpicZonePlayer;
 import com.randomappdev.EpicZones.objects.EpicZonePlayer.EpicZoneMode;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -285,6 +287,21 @@ public class PlayerEvents implements Listener
                                     event.setCancelled(true);
                                 }
                             }
+                        } else if (event.getClickedBlock().getType() == Material.SIGN_POST)
+                        {
+
+                            EpicZone ez = General.GetZoneForLocation(event.getClickedBlock().getLocation());
+                            if (ez != null)
+                            {
+                                if (ez.getEcon().getForSale())
+                                {
+                                    if (ez.getEcon().getSignLocation().equalsIgnoreCase(Util.getStringFromLocation(event.getClickedBlock().getLocation())))
+                                    {
+                                        EconIntegration.buyZone(event.getPlayer(), ez);
+                                    }
+                                }
+                            }
+
                         } else if (event.getPlayer().getItemInHand().getTypeId() == Config.zoneTool)
                         {
                             if (General.getPlayer(event.getPlayer().getName()).getMode() == EpicZoneMode.ZoneDraw)

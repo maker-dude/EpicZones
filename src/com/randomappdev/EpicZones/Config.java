@@ -42,6 +42,7 @@ public class Config
     private static File file;
     public static boolean enableRadius;
     public static boolean enableHeroChat;
+    public static boolean enableEconomy;
     public static boolean globalZoneDefaultBuild;
     public static boolean globalZoneDefaultDestroy;
     public static boolean globalZoneDefaultEnter;
@@ -55,6 +56,7 @@ public class Config
 
         enableRadius = true;
         enableHeroChat = false;
+        enableEconomy = false;
         globalZoneDefaultBuild = true;
         globalZoneDefaultDestroy = true;
         globalZoneDefaultEnter = true;
@@ -99,6 +101,7 @@ public class Config
 
                 enableRadius = Util.getBooleanValueFromHashSet("enableRadius", root);
                 enableHeroChat = Util.getBooleanValueFromHashSet("enableHeroChat", root);
+                enableEconomy = Util.getBooleanValueFromHashSet("enableEconomy", root);
 
                 if (Util.getObjectValueFromHashSet("globalZoneDefaultAllow", root) == null)
                 {
@@ -133,6 +136,7 @@ public class Config
 
         root.put("enableRadius", enableRadius);
         root.put("enableHeroChat", enableHeroChat);
+        root.put("enableEconomy", enableEconomy);
         root.put("globalZoneDefaultBuild", globalZoneDefaultBuild);
         root.put("globalZoneDefaultDestroy", globalZoneDefaultDestroy);
         root.put("globalZoneDefaultEnter", globalZoneDefaultEnter);

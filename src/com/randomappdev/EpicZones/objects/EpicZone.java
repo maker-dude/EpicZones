@@ -84,6 +84,7 @@ public class EpicZone
     private HashSet<String> childrenTags = new HashSet<String>();
     private boolean allowEndermenPick = true;
     private HashSet<String> disallowedCommands = new HashSet<String>();
+    private EpicZoneEcon econ = new EpicZoneEcon();
 
     public EpicZone()
     {
@@ -117,6 +118,7 @@ public class EpicZone
         this.permissions = prime.permissions;
         this.allowEndermenPick = prime.allowEndermenPick;
         this.disallowedCommands = prime.disallowedCommands;
+        this.econ = prime.econ;
     }
 
     public EpicZone(String zoneData)
@@ -442,6 +444,11 @@ public class EpicZone
     public void setExplode(String value)
     {
         this.explode = new EpicZoneExplode(value);
+    }
+
+    public void setEcon(String value)
+    {
+        this.econ = new EpicZoneEcon(value);
     }
 
     public void removeChild(String tag)
@@ -850,6 +857,11 @@ public class EpicZone
         return this.allowEndermenPick;
     }
 
+    public EpicZoneEcon getEcon()
+    {
+        return this.econ;
+    }
+
     public boolean isOwner(String playerName)
     {
         return owners.contains(playerName);
@@ -955,6 +967,7 @@ public class EpicZone
     public boolean IsPointWithin(String worldName, Integer height, Point point)
     {
         boolean result = false;
+
         if (worldName.equalsIgnoreCase(this.getWorld()))
         {
             if (this.type == ZoneType.GLOBAL)

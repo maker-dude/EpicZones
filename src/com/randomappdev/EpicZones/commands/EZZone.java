@@ -36,6 +36,7 @@ import org.bukkit.command.CommandSender;
 
 public class EZZone implements CommandHandler
 {
+
     public boolean onCommand(String command, CommandSender sender, String[] args)
     {
         if (args != null && args.length > 0)

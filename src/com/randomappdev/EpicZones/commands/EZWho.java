@@ -34,7 +34,6 @@ package com.randomappdev.EpicZones.commands;
 import com.randomappdev.EpicZones.General;
 import com.randomappdev.EpicZones.Message;
 import com.randomappdev.EpicZones.Message.Message_ID;
-import com.randomappdev.EpicZones.integration.PermissionsManager;
 import com.randomappdev.EpicZones.objects.EpicZone;
 import com.randomappdev.EpicZones.objects.EpicZonePlayer;
 import org.bukkit.command.CommandSender;
@@ -48,7 +47,7 @@ public class EZWho implements CommandHandler
     public boolean onCommand(String command, CommandSender sender, String[] args)
     {
 
-        if ((sender instanceof Player && PermissionsManager.hasPermission((Player) sender, "epiczones.who")))
+        if (Util.isAdmin(sender, "epiczones.who", false))
         {
             Player player = (Player) sender;
             int pageNumber = 1;

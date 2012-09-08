@@ -37,17 +37,20 @@ import com.randomappdev.EpicZones.commands.EZReload;
 import com.randomappdev.EpicZones.commands.EZWho;
 import com.randomappdev.EpicZones.commands.EZZone;
 import com.randomappdev.EpicZones.integration.EpicSpout;
+import com.randomappdev.EpicZones.integration.MetricsLite;
 import com.randomappdev.EpicZones.integration.PermissionsManager;
 import com.randomappdev.EpicZones.listeners.*;
 import com.randomappdev.EpicZones.objects.EpicZonePlayer;
 import com.randomappdev.EpicZones.objects.EpicZonePlayer.EpicZoneMode;
-import com.randomappdev.pluginstats.Ping;
+import net.milkbowl.vault.economy.Economy;
+import net.milkbowl.vault.permission.Permission;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.getspout.spout.Spout;
 
@@ -81,8 +84,8 @@ public class EpicZones extends JavaPlugin
     private static CommandHandler zoneCommandHandler = new EZZone();
     private static CommandHandler whoCommandHandler = new EZWho();
     private static int scheduleID = -1;
-
     public static HeroChat heroChat = null;
+    Permission permission = null;
 
     public void onEnable()
     {
@@ -90,6 +93,10 @@ public class EpicZones extends JavaPlugin
         Config.Load(this);
         PluginDescriptionFile pdfFile = this.getDescription();
         Log.Init(pdfFile.getName());
+
+        setupPermissions();
+        PermissionsManager.Init(permission);
+
         spoutListener = null;
         spoutInputListener = null;
 
@@ -108,13 +115,13 @@ public class EpicZones extends JavaPlugin
 
             registerCommands();
 
-            setupPermissions();
             setupEpicZones();
             setupHeroChat();
+            setupEconomy();
             setupSpout(pm);
 
-            Ping png = new Ping();
-            png.init(this);
+            MetricsLite metricsLite = new MetricsLite(this);
+            metricsLite.start();
 
             Log.Write("version " + pdfFile.getVersion() + " is enabled.");
 
@@ -171,7 +178,11 @@ public class EpicZones extends JavaPlugin
 
     public void setupPermissions()
     {
-        PermissionsManager.Init(this);
+        if (getServer().getPluginManager().getPlugin("Vault") != null)
+        {
+            RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
+            permission = rsp.getProvider();
+        }
     }
 
     private void EnablePlugin(String pluginName, String pluginType)
@@ -204,6 +215,26 @@ public class EpicZones extends JavaPlugin
                 heroChat = (HeroChat) test;
                 General.HeroChatEnabled = true;
                 Log.Write("HeroChat Integration Enabled.");
+            }
+        }
+    }
+
+    private void setupEconomy()
+    {
+        if (Config.enableEconomy)
+        {
+            if (this.getServer().getPluginManager().getPlugin("Vault") != null)
+            {
+                RegisteredServiceProvider<Economy> economyProvider = this.getServer().getServicesManager().getRegistration(Economy.class);
+                if (economyProvider != null)
+                {
+                    General.economy = economyProvider.getProvider();
+                }
+                if (General.economy != null)
+                {
+                    General.EconomyEnabled = true;
+                    Log.Write("Economy Integration Enabled.");
+                }
             }
         }
     }

@@ -38,6 +38,7 @@ import com.randomappdev.EpicZones.objects.EpicZone.ZoneType;
 import com.randomappdev.EpicZones.objects.EpicZoneDAL;
 import com.randomappdev.EpicZones.objects.EpicZonePlayer;
 import com.randomappdev.EpicZones.objects.EpicZonePlayer.EpicZoneMode;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -58,6 +59,8 @@ public class General
     public static EpicZones plugin;
     public static boolean SpoutEnabled = false;
     public static boolean HeroChatEnabled = false;
+    public static boolean EconomyEnabled = false;
+    public static Economy economy;
 
     private static final String ZONE_FILE = "zones.txt";
 
@@ -359,6 +362,11 @@ public class General
         }
     }
 
+    public static EpicZone GetZoneForLocation(Location loc)
+    {
+        return GetZoneForPlayer(null, loc.getWorld().getName(), loc.getBlockY(), new Point(loc.getBlockX(), loc.getBlockZ()));
+    }
+
     public static EpicZone GetZoneForPlayer(@Nullable Player player, String worldName, int playerHeight, Point playerPoint)
     {
         EpicZone result = null;
@@ -388,6 +396,7 @@ public class General
     private static EpicZone IsPlayerWithinZone(EpicZone zone, String worldName, int playerHeight, Point playerPoint)
     {
         EpicZone result = null;
+
         if (zone.IsPointWithin(worldName, playerHeight, playerPoint))
         {
             result = zone;

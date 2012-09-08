@@ -31,21 +31,16 @@ THE SOFTWARE.
 
 package com.randomappdev.EpicZones.listeners;
 
-import com.randomappdev.EpicZones.General;
-import com.randomappdev.EpicZones.Log;
-import com.randomappdev.EpicZones.Message;
+import com.randomappdev.EpicZones.*;
 import com.randomappdev.EpicZones.Message.Message_ID;
-import com.randomappdev.EpicZones.ZonePermissionsHandler;
 import com.randomappdev.EpicZones.objects.EpicZone;
 import com.randomappdev.EpicZones.objects.EpicZonePlayer;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockBurnEvent;
-import org.bukkit.event.block.BlockIgniteEvent;
+import org.bukkit.event.block.*;
 import org.bukkit.event.block.BlockIgniteEvent.IgniteCause;
-import org.bukkit.event.block.BlockPlaceEvent;
 
 import java.awt.*;
 import java.util.Date;
@@ -144,6 +139,24 @@ public class BlockEvents implements Listener
                     }
                     event.setCancelled(true);
                 }
+
+                if (!event.isCancelled())
+                {
+                    if (event.getBlock().getType() == Material.SIGN_POST)
+                    {
+                        EpicZone currentZone = General.GetZoneForLocation(event.getBlock().getLocation());
+                        if (currentZone.getEcon().getForSale())
+                        {
+                            if (Util.getStringFromLocation(event.getBlock().getLocation()).equalsIgnoreCase(currentZone.getEcon().getSignLocation()))
+                            {
+                                General.plugin.getServer().getPlayer(currentZone.getEcon().getSeller()).sendMessage(currentZone.getName() + " is no longer for sale. You are now the owner of that zone.");
+                                currentZone.getOwners().add(currentZone.getEcon().getSeller());
+                                currentZone.setEcon("");
+                            }
+                        }
+                    }
+                }
+
             }
         } catch (Exception e)
         {
@@ -190,6 +203,67 @@ public class BlockEvents implements Listener
         } catch (Exception e)
         {
             Log.Write(e.getMessage());
+        }
+    }
+
+    @EventHandler
+    public void onSignChange(SignChangeEvent event)
+    {
+        if (!event.isCancelled())
+        {
+            String line1 = event.getLines()[0];
+            if (line1.equalsIgnoreCase("[ezsell]"))
+            {
+                EpicZone ez = General.GetZoneForLocation(event.getBlock().getLocation());
+                Player player = event.getPlayer();
+                EpicZonePlayer ezp = General.getPlayer(player.getName());
+                if (ez != null)
+                {
+                    Log.Write(ez.getName());
+                    if (ez.getType() != EpicZone.ZoneType.GLOBAL)
+                    {
+                        if (ezp.getAdmin() || ez.isOwner(ezp.getName()))
+                        {
+
+                            String line2 = event.getLines()[1];
+                            String seller = event.getLines()[2];
+                            Integer purchasePrice = 0;
+
+                            if (line2.length() > 0)
+                            {
+
+                                if (seller.trim().length() == 0)
+                                {
+                                    seller = player.getName();
+                                }
+
+                                purchasePrice = new Integer(line2);
+
+                                ez.getEcon().setForSale(true);
+                                ez.getEcon().setPurchasePrice(purchasePrice);
+                                ez.getEcon().setSeller(seller);
+                                ez.getEcon().setSignLocation(Util.getStringFromLocation(event.getBlock().getLocation()));
+
+                                ez.getOwners().clear();
+                                ez.getPermissions().clear();
+
+                                event.setLine(0, "For Sale by");
+                                event.setLine(1, seller);
+                                event.setLine(2, "Price:");
+                                event.setLine(3, line2);
+
+                                player.sendMessage(ez.getName() + " is now up for sale!");
+
+                                General.SaveZones();
+
+                            } else
+                            {
+                                player.sendMessage("You must specify a price on line 2 to sell this Zone.");
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
