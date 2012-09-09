@@ -32,16 +32,25 @@ THE SOFTWARE.
 package com.randomappdev.EpicZones;
 
 import com.herocraftonline.dthielke.herochat.HeroChat;
-import com.randomappdev.EpicZones.commands.CommandHandler;
-import com.randomappdev.EpicZones.commands.EZReload;
-import com.randomappdev.EpicZones.commands.EZWho;
-import com.randomappdev.EpicZones.commands.EZZone;
-import com.randomappdev.EpicZones.integration.EpicSpout;
-import com.randomappdev.EpicZones.integration.MetricsLite;
-import com.randomappdev.EpicZones.integration.PermissionsManager;
-import com.randomappdev.EpicZones.listeners.*;
-import com.randomappdev.EpicZones.objects.EpicZonePlayer;
-import com.randomappdev.EpicZones.objects.EpicZonePlayer.EpicZoneMode;
+import com.randomappdev.EpicZones.modules.border.borderManager;
+import com.randomappdev.EpicZones.modules.core.MetricsLite;
+import com.randomappdev.EpicZones.modules.core.commands.CommandHandler;
+import com.randomappdev.EpicZones.modules.core.commands.EZReload;
+import com.randomappdev.EpicZones.modules.core.commands.EZWho;
+import com.randomappdev.EpicZones.modules.core.commands.EZZone;
+import com.randomappdev.EpicZones.modules.core.coreManager;
+import com.randomappdev.EpicZones.modules.core.objects.EpicZonePlayer;
+import com.randomappdev.EpicZones.modules.core.objects.EpicZonePlayer.EpicZoneMode;
+import com.randomappdev.EpicZones.modules.core.permissionsManager;
+import com.randomappdev.EpicZones.modules.economy.economyManager;
+import com.randomappdev.EpicZones.modules.extras.Regen;
+import com.randomappdev.EpicZones.modules.protection.protectionManager;
+import com.randomappdev.EpicZones.modules.rights.rightsManager;
+import com.randomappdev.EpicZones.modules.spout.spoutManager;
+import com.randomappdev.EpicZones.utilities.Config;
+import com.randomappdev.EpicZones.utilities.Globals;
+import com.randomappdev.EpicZones.utilities.Log;
+import com.randomappdev.EpicZones.utilities.Messaging;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.command.Command;
@@ -65,14 +74,6 @@ import java.util.Scanner;
 public class EpicZones extends JavaPlugin
 {
 
-    private final PlayerEvents playerListener = new PlayerEvents();
-    private final BlockEvents blockListener = new BlockEvents();
-    private final EntityEvents entityListener = new EntityEvents();
-    private final VehicleEvents vehicleListener = new VehicleEvents();
-    private final WorldEvents worldListener = new WorldEvents();
-    private SpoutEvents spoutListener;
-    private SpoutInputEvents spoutInputListener;
-
     private Regen regen = new Regen(this);
     private Map<String, CommandHandler> handlers = new HashMap<String, CommandHandler>();
 
@@ -83,51 +84,28 @@ public class EpicZones extends JavaPlugin
     private static CommandHandler reloadCommandHandler = new EZReload();
     private static CommandHandler zoneCommandHandler = new EZZone();
     private static CommandHandler whoCommandHandler = new EZWho();
-    private static int scheduleID = -1;
     public static HeroChat heroChat = null;
     Permission permission = null;
 
     public void onEnable()
     {
 
-        Config.Load(this);
         PluginDescriptionFile pdfFile = this.getDescription();
-        Log.Init(pdfFile.getName());
-
-        setupPermissions();
-        PermissionsManager.Init(permission);
-
-        spoutListener = null;
-        spoutInputListener = null;
+        Log.init(pdfFile.getName());
 
         try
         {
 
-            PluginManager pm = getServer().getPluginManager();
-
-            pm.registerEvents(this.playerListener, this);
-            pm.registerEvents(this.blockListener, this);
-            pm.registerEvents(this.entityListener, this);
-            pm.registerEvents(this.vehicleListener, this);
-            pm.registerEvents(this.worldListener, this);
-
-            scheduleID = getServer().getScheduler().scheduleSyncRepeatingTask(this, regen, 10, 10);
-
-            registerCommands();
-
             setupEpicZones();
-            setupHeroChat();
-            setupEconomy();
-            setupSpout(pm);
 
             MetricsLite metricsLite = new MetricsLite(this);
             metricsLite.start();
 
-            Log.Write("version " + pdfFile.getVersion() + " is enabled.");
+            Log.write("version " + pdfFile.getVersion() + " is enabled.");
 
         } catch (Throwable e)
         {
-            Log.Write(" error starting: " + e.getMessage() + " Disabling plugin");
+            Log.write(" error starting: " + e.getMessage() + " Disabling plugin");
             this.getServer().getPluginManager().disablePlugin(this);
         }
     }
@@ -135,16 +113,14 @@ public class EpicZones extends JavaPlugin
     public void onDisable()
     {
 
-        while (getServer().getScheduler().isCurrentlyRunning(scheduleID))
-        {
-        }
-        getServer().getScheduler().cancelTask(scheduleID);
+        getServer().getScheduler().cancelTasks(this);
         regen = null;
 
         PluginDescriptionFile pdfFile = this.getDescription();
-        for (String playerName : General.myPlayers.keySet())
+
+        for (String playerName : Globals.myPlayers.keySet())
         {
-            EpicZonePlayer ezp = General.myPlayers.get(playerName);
+            EpicZonePlayer ezp = Globals.myPlayers.get(playerName);
             if (ezp.getMode() != EpicZoneMode.None)
             {
                 if (ezp.getEditZone() != null)
@@ -154,35 +130,124 @@ public class EpicZones extends JavaPlugin
             }
         }
 
-        General.HeroChatEnabled = false;
-        General.SpoutEnabled = false;
-        Log.Write("version " + pdfFile.getVersion() + " is disabled.");
+        Log.write("version " + pdfFile.getVersion() + " is disabled.");
     }
 
-    public void registerCommand(String command, CommandHandler handler)
+    public void setupEpicZones()
     {
-        handlers.put(command.toLowerCase(), handler);
+
+        Config.Load(this);
+        PluginManager pluginManager = getServer().getPluginManager();
+        setupPermissions();
+        setupCore(pluginManager);
+        setupRights(pluginManager);
+        setupBorder(pluginManager);
+        setupProtection(pluginManager);
+        setupExtras(pluginManager);
+        setupHeroChat();
+        setupSpout(pluginManager);
+        setupEconomy(pluginManager);
+        loadInteractiveItems();
+
     }
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
+    private void setupCore(PluginManager pluginManager)
     {
-        boolean result = true;
-        CommandHandler handler = handlers.get(commandLabel.toLowerCase());
-        if (handler != null)
+
+        Globals.plugin = this;
+        Globals.myZones.clear();
+        Globals.myGlobalZones.clear();
+        Globals.myPlayers.clear();
+        Globals.version = this.getDescription().getVersion();
+
+        coreManager.init(pluginManager);
+
+        LoadMessageList();
+
+        Globals.LoadZones();
+        Globals.addPlayer(null);
+
+        for (Player p : getServer().getOnlinePlayers())
         {
-            result = handler.onCommand(commandLabel, sender, args);
+            Globals.addPlayer(p);
         }
-        return result;
+
+        registerCommands();
+
     }
 
-    public void setupPermissions()
+    private void setupRights(PluginManager pluginManager)
+    {
+        if (Config.enableRights)
+        {
+            rightsManager.init(pluginManager);
+            Globals.rightsEnabled = true;
+        }
+        if (Globals.rightsEnabled)
+        {
+            Log.write("Rights Module Enabled.");
+        } else
+        {
+            Log.write("Rights Module NOT Enabled.");
+        }
+    }
+
+    private void setupBorder(PluginManager pluginManager)
+    {
+        if (Config.enableBorder)
+        {
+            borderManager.init(pluginManager);
+            Globals.borderEnabled = true;
+        }
+        if (Globals.borderEnabled)
+        {
+            Log.write("Border Module Enabled.");
+        } else
+        {
+            Log.write("Border Module NOT Enabled.");
+        }
+    }
+
+    private void setupProtection(PluginManager pluginManager)
+    {
+        if (Config.enableProtection)
+        {
+            protectionManager.init(pluginManager);
+            Globals.protectionEnabled = true;
+        }
+        if (Globals.protectionEnabled)
+        {
+            Log.write("Protection Module Enabled.");
+        } else
+        {
+            Log.write("Protection Module NOT Enabled.");
+        }
+    }
+
+    private void setupExtras(PluginManager pluginManager)
+    {
+        if (Config.enableExtras)
+        {
+            getServer().getScheduler().scheduleSyncRepeatingTask(this, regen, 10, 10);
+            Globals.extrasEnabled = true;
+        }
+        if (Globals.extrasEnabled)
+        {
+            Log.write("Extras Module Enabled.");
+        } else
+        {
+            Log.write("Extras Module NOT Enabled.");
+        }
+    }
+
+    private void setupPermissions()
     {
         if (getServer().getPluginManager().getPlugin("Vault") != null)
         {
             RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
             permission = rsp.getProvider();
         }
+        permissionsManager.Init(permission);
     }
 
     private void EnablePlugin(String pluginName, String pluginType)
@@ -195,17 +260,17 @@ public class EpicZones extends JavaPlugin
             {
                 try
                 {
-                    Log.Write("Detected " + pluginType + " Plugin > " + pluginName + " > Enabling...");
+                    Log.write("Detected " + pluginType + " Plugin > " + pluginName + " > Enabling...");
                     this.getServer().getPluginManager().enablePlugin(plg);
                 } catch (Exception e)
                 {
-                    Log.Write(e.getMessage());
+                    Log.write(e.getMessage());
                 }
             }
         }
     }
 
-    public void setupHeroChat()
+    private void setupHeroChat()
     {
         if (Config.enableHeroChat)
         {
@@ -213,33 +278,46 @@ public class EpicZones extends JavaPlugin
             if (test != null)
             {
                 heroChat = (HeroChat) test;
-                General.HeroChatEnabled = true;
-                Log.Write("HeroChat Integration Enabled.");
+                Globals.herochatEnabled = true;
             }
+        }
+        if (Globals.herochatEnabled)
+        {
+            Log.write("HeroChat Module Enabled.");
+        } else
+        {
+            Log.write("HeroChat Module NOT Enabled.");
         }
     }
 
-    private void setupEconomy()
+    private void setupEconomy(PluginManager pluginManager)
     {
         if (Config.enableEconomy)
         {
-            if (this.getServer().getPluginManager().getPlugin("Vault") != null)
+            if (pluginManager.getPlugin("Vault") != null)
             {
                 RegisteredServiceProvider<Economy> economyProvider = this.getServer().getServicesManager().getRegistration(Economy.class);
                 if (economyProvider != null)
                 {
-                    General.economy = economyProvider.getProvider();
+                    Globals.economy = economyProvider.getProvider();
                 }
-                if (General.economy != null)
+                if (Globals.economy != null)
                 {
-                    General.EconomyEnabled = true;
-                    Log.Write("Economy Integration Enabled.");
+                    economyManager.init(pluginManager);
+                    Globals.economyEnabled = true;
                 }
             }
         }
+        if (Globals.economyEnabled)
+        {
+            Log.write("Economy Module Enabled.");
+        } else
+        {
+            Log.write("Economy Module NOT Enabled.");
+        }
     }
 
-    public void setupSpout(PluginManager pm)
+    private void setupSpout(PluginManager pm)
     {
         if (Config.enableSpout)
         {
@@ -247,74 +325,44 @@ public class EpicZones extends JavaPlugin
             if (test != null)
             {
                 EnablePlugin("Spout", "Spout");
-                EpicSpout.Init((Spout) test);
-                this.spoutListener = new SpoutEvents();
-                this.spoutInputListener = new SpoutInputEvents();
-                pm.registerEvents(this.spoutListener, this);
-                pm.registerEvents(this.spoutInputListener, this);
-                General.SpoutEnabled = true;
-                Log.Write("Spout Integration Enabled.");
-            } else
-            {
-                Log.Write("Spout plugin not detected, unable to enable Spout integration.");
-            }
-        }
-    }
+                spoutManager.init((Spout) test, pm);
 
-    private void registerCommands()
-    {
-        for (String cmd : ZONE_COMMANDS)
-        {
-            registerCommand(cmd, zoneCommandHandler);
-        }
-
-        for (String cmd : WHO_COMMANDS)
-        {
-            registerCommand(cmd, whoCommandHandler);
-        }
-
-        for (String cmd : RELOAD_COMMANDS)
-        {
-            registerCommand(cmd, reloadCommandHandler);
-        }
-    }
-
-    public void setupEpicZones()
-    {
-
-        if (General.SpoutEnabled)
-        {
-            for (String tag : General.myPlayers.keySet())
-            {
-                if (EpicSpout.UseSpout(General.myPlayers.get(tag)))
+                for (String tag : Globals.myPlayers.keySet())
                 {
-                    EpicSpout.RemovePlayerControls(General.myPlayers.get(tag));
+                    if (spoutManager.isSpoutActive(Globals.myPlayers.get(tag)))
+                    {
+                        spoutManager.removePlayerControls(Globals.myPlayers.get(tag));
+                    }
                 }
+                Globals.spoutEnabled = true;
             }
         }
-
-        General.plugin = this;
-        General.myZones.clear();
-        General.myGlobalZones.clear();
-
-
-        General.myPlayers.clear();
-        Config.Load(this);
-        General.version = this.getDescription().getVersion();
-        LoadMessageList();
-        General.LoadZones();
-        General.addPlayer(null);
-        for (Player p : getServer().getOnlinePlayers())
+        if (Globals.spoutEnabled)
         {
-            General.addPlayer(p);
+            Log.write("Spout Module Enabled.");
+        } else
+        {
+            Log.write("Spout Module NOT Enabled.");
         }
     }
 
-    public void LoadMessageList()
+    private void loadInteractiveItems()
+    {
+        Globals.interactiveItems.clear();
+        Globals.interactiveItems.add(324); // Wood Door
+        Globals.interactiveItems.add(330); // Iron Door
+        Globals.interactiveItems.add(323); // Sign
+        Globals.interactiveItems.add(321); // Painting
+        Globals.interactiveItems.add(354); // Bed
+        Globals.interactiveItems.add(355); // Cake
+        Globals.interactiveItems.add(356); // Redstone Repeater
+    }
+
+    private void LoadMessageList()
     {
         String line;
-        File file = new File(General.plugin.getDataFolder() + File.separator + "Language" + File.separator + Config.language + ".txt");
-        Message.messageList = new HashMap<Integer, String>();
+        File file = new File(Globals.plugin.getDataFolder() + File.separator + "Language" + File.separator + Config.language + ".txt");
+        Messaging.messageList = new HashMap<Integer, String>();
         boolean updateNeeded = false;
         boolean foundVersion = false;
 
@@ -340,16 +388,16 @@ public class EpicZones extends JavaPlugin
                                 String version = line.substring(line.indexOf(":") + 1, line.length());
                                 if (version != null && version.length() > 0)
                                 {
-                                    if (!version.trim().equalsIgnoreCase(General.version))
+                                    if (!version.trim().equalsIgnoreCase(Globals.version))
                                     {
                                         updateNeeded = true;
-                                        Log.Write("Language version [" + version.trim() + "] does not match plugin version [" + General.version + "], Updating...");
+                                        Log.write("Language version [" + version.trim() + "] does not match plugin version [" + Globals.version + "], Updating...");
                                         break;
                                     }
                                 } else
                                 {
                                     updateNeeded = true;
-                                    Log.Write("Invalid Language file, Updating...");
+                                    Log.write("Invalid Language file, Updating...");
                                     break;
                                 }
                             }
@@ -359,7 +407,7 @@ public class EpicZones extends JavaPlugin
                             String message;
                             id = Integer.parseInt(line.substring(0, line.indexOf(":")).trim());
                             message = line.substring(line.indexOf(":") + 1, line.length());
-                            Message.messageList.put(id, message);
+                            Messaging.messageList.put(id, message);
                         }
                     }
                 }
@@ -374,7 +422,7 @@ public class EpicZones extends JavaPlugin
                 LoadMessageList();
             } else
             {
-                Log.Write("Language File Loaded [" + Config.language + ".txt" + "].");
+                Log.write("Language File Loaded [" + Config.language + ".txt" + "].");
             }
         } catch (Exception e)
         {
@@ -384,11 +432,11 @@ public class EpicZones extends JavaPlugin
 
     private void InitMessageList()
     {
-        File file = new File(General.plugin.getDataFolder() + File.separator + "Language");
+        File file = new File(Globals.plugin.getDataFolder() + File.separator + "Language");
 
-        if (!General.plugin.getDataFolder().exists())
+        if (!Globals.plugin.getDataFolder().exists())
         {
-            General.plugin.getDataFolder().mkdir();
+            Globals.plugin.getDataFolder().mkdir();
         }
         if (!file.exists())
         {
@@ -406,7 +454,7 @@ public class EpicZones extends JavaPlugin
 
     private void BuildLanguageFile(String FileName, boolean force)
     {
-        File file = new File(General.plugin.getDataFolder() + File.separator + "Language" + File.separator + FileName + ".txt");
+        File file = new File(Globals.plugin.getDataFolder() + File.separator + "Language" + File.separator + FileName + ".txt");
         if (!file.exists() || force)
         {
             InputStream jarURL;
@@ -416,12 +464,12 @@ public class EpicZones extends JavaPlugin
                 copyFile(jarURL, file);
             } catch (Exception ex)
             {
-                Log.Write(ex.getMessage());
+                Log.write(ex.getMessage());
             }
         }
     }
 
-    public void copyFile(InputStream in, File out) throws Exception
+    private void copyFile(InputStream in, File out) throws Exception
     {
         FileOutputStream fos = new FileOutputStream(out);
         try
@@ -434,7 +482,7 @@ public class EpicZones extends JavaPlugin
             }
         } catch (Exception e)
         {
-            Log.Write(e.getMessage());
+            Log.write(e.getMessage());
         } finally
         {
             if (in != null)
@@ -445,4 +493,38 @@ public class EpicZones extends JavaPlugin
         }
     }
 
+    private void registerCommand(String command, CommandHandler handler)
+    {
+        handlers.put(command.toLowerCase(), handler);
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
+    {
+        boolean result = true;
+        CommandHandler handler = handlers.get(commandLabel.toLowerCase());
+        if (handler != null)
+        {
+            result = handler.onCommand(commandLabel, sender, args);
+        }
+        return result;
+    }
+
+    private void registerCommands()
+    {
+        for (String cmd : ZONE_COMMANDS)
+        {
+            registerCommand(cmd, zoneCommandHandler);
+        }
+
+        for (String cmd : WHO_COMMANDS)
+        {
+            registerCommand(cmd, whoCommandHandler);
+        }
+
+        for (String cmd : RELOAD_COMMANDS)
+        {
+            registerCommand(cmd, reloadCommandHandler);
+        }
+    }
 }

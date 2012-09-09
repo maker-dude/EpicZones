@@ -1,6 +1,6 @@
 name: EpicZones
 main: com.randomappdev.EpicZones.EpicZones
-version: 0.37
+version: 1.0
 website: http://github.com/jblaske
 author: jblaske
 softdepend: [Vault]

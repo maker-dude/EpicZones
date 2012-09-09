@@ -2,25 +2,81 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3432172b-4a02-41c8-abcb-1b521ded011d" name="Default" comment="v0.37">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/commands/Util.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/integration/EconIntegration.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/integration/MetricsLite.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/objects/EpicZoneEcon.java" />
-      <change type="DELETED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\pluginstats\Ping.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/border/borderManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/border/listeners/ChangesListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/border/listeners/MovementListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/coreManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/economy/listeners/PlayerEvents.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/protection/listeners/BlockEvents.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/protection/listeners/PlayerEvents.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/protection/protectionManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/rights/listeners/ChangesListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/rights/listeners/MovementListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/rights/rightsManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/spout/listeners/PlayerEvents.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/spout/listeners/SpoutEvents.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/spout/listeners/VehicleEvents.java" />
+      <change type="DELETED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\Security.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\ZonePermissionsHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\Util.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\listeners\SpoutEvents.java" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\Config.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/utilities/Config.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\General.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/utilities/Globals.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\Log.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/utilities/Log.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\Message.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/utilities/Messaging.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\Regen.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/extras/Regen.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\Util.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/utilities/Util.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\CommandHandler.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/CommandHandler.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZReload.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZReload.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZWho.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZWho.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZone.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZone.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneCancel.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneCancel.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneCeiling.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneCeiling.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneChild.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneChild.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneCommand.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneCommand.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneConfirm.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneConfirm.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneCreate.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneCreate.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneDebug.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneDebug.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneDelete.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneDelete.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneDraw.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneDraw.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneEdit.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneEdit.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneFlag.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneFlag.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneFloor.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneFloor.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneHelp.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneHelp.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneInfo.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneInfo.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneList.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneList.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneMessage.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneMessage.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneName.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneName.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneOwner.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneOwner.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneParent.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneParent.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZonePerm.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZonePerm.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneRadius.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneRadius.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneSave.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneSave.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\commands\EZZoneWorld.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZZoneWorld.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\integration\EconIntegration.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/economy/economyManager.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\integration\EpicSpout.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/spout/spoutManager.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\integration\HeroChatIntegration.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/herochat/herochatManager.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\integration\MetricsLite.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/MetricsLite.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\integration\PermissionsManager.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/permissionsManager.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\listeners\BlockEvents.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/economy/listeners/BlockEvents.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\listeners\EntityEvents.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/protection/listeners/EntityEvents.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\listeners\PlayerEvents.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/listeners/PlayerEvents.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\listeners\SpoutInputEvents.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/spout/listeners/SpoutInputEvents.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\listeners\VehicleEvents.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/listeners/VehicleEvents.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\listeners\WorldEvents.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/listeners/WorldEvents.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\objects\EpicZone.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/objects/EpicZone.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\objects\EpicZoneDAL.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/objects/EpicZoneDAL.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\objects\EpicZoneEcon.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/objects/EpicZoneEcon.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\objects\EpicZoneExplode.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/objects/EpicZoneExplode.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\objects\EpicZoneFire.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/objects/EpicZoneFire.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\objects\EpicZonePermission.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/objects/EpicZonePermission.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\objects\EpicZonePlayer.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/objects/EpicZonePlayer.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\objects\EpicZonePlayerUI.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/objects/EpicZonePlayerUI.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\objects\EpicZoneRegen.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/objects/EpicZoneRegen.java" />
+      <change type="MOVED" beforePath="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\objects\PillarBlock.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/objects/PillarBlock.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugin.yml" afterPath="$PROJECT_DIR$/plugin.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/Config.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/Config.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/EpicZones.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/EpicZones.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/General.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/General.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/Util.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/Util.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/commands/EZReload.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/commands/EZReload.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/commands/EZWho.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/commands/EZWho.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/commands/EZZone.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/commands/EZZone.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/commands/EZZoneInfo.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/commands/EZZoneInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/integration/PermissionsManager.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/integration/PermissionsManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/listeners/BlockEvents.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/listeners/BlockEvents.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/listeners/PlayerEvents.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/listeners/PlayerEvents.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/objects/EpicZone.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/objects/EpicZone.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/objects/EpicZoneDAL.java" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/objects/EpicZoneDAL.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/res/DE_DE.txt" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/res/DE_DE.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/res/EN_US.txt" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/res/EN_US.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/res/FR_FR.txt" afterPath="$PROJECT_DIR$/src/com/randomappdev/EpicZones/res/FR_FR.txt" />
@@ -81,37 +137,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BlockEvents.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/listeners/BlockEvents.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="149" column="0" selection-start="5668" selection-end="5668" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PermissionsManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/integration/PermissionsManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="56" selection-start="1481" selection-end="1481" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MetricsLite.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/integration/MetricsLite.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="75" selection-start="2099" selection-end="2099" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="EpicZones.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/EpicZones.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="38" selection-start="3957" selection-end="3957" vertical-scroll-proportion="0.49741825">
+            <state line="94" column="80" selection-start="3941" selection-end="3941" vertical-scroll-proportion="1.1788908">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3058#3106#0" expanded="true" />
+                <element signature="method#LoadMessageList#0;class#EpicZones#0" expanded="false" />
+                <element signature="method#InitMessageList#0;class#EpicZones#0" expanded="false" />
+                <element signature="method#BuildLanguageFiles#0;class#EpicZones#0" expanded="false" />
+                <element signature="method#BuildLanguageFile#0;class#EpicZones#0" expanded="false" />
+                <element signature="method#copyFile#0;class#EpicZones#0" expanded="false" />
+                <element signature="method#registerCommand#0;class#EpicZones#0" expanded="false" />
+                <element signature="method#onCommand#0;class#EpicZones#0" expanded="false" />
+                <element signature="method#registerCommands#0;class#EpicZones#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Globals.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/utilities/Globals.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="64" column="52" selection-start="2553" selection-end="2553" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#1791#1839#0" expanded="true" />
+                <element signature="e#2650#2659#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EpicZonePlayer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/objects/EpicZonePlayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="226" column="43" selection-start="5730" selection-end="5730" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -119,46 +180,75 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EZReload.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/commands/EZReload.java">
+      <file leaf-file-name="coreManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/coreManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="24" selection-start="1621" selection-end="1621" vertical-scroll-proportion="0.0">
+            <state line="29" column="62" selection-start="1064" selection-end="1064" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Config.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/utilities/Config.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="149" column="14" selection-start="5231" selection-end="5231" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#1329#1377#0" expanded="true" />
+                <element signature="e#2840#2870#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="permissionsManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/permissionsManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="44" column="19" selection-start="1499" selection-end="1499" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="General.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/General.java">
+      <file leaf-file-name="economyManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/economy/economyManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="28" selection-start="2245" selection-end="2245" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="17" column="23" selection-start="662" selection-end="662" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EpicZone.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/objects/EpicZone.java">
+      <file leaf-file-name="protectionManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/protection/protectionManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="448" column="16" selection-start="11464" selection-end="11464" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="14" column="26" selection-start="582" selection-end="582" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EpicZoneEcon.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/objects/EpicZoneEcon.java">
+      <file leaf-file-name="rightsManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/rights/rightsManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="8" selection-start="448" selection-end="448" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="32" column="0" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EZZoneCommand.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/commands/EZZoneCommand.java">
+      <file leaf-file-name="spoutManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/spout/spoutManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="13" selection-start="1629" selection-end="1629" vertical-scroll-proportion="0.0">
+            <state line="48" column="13" selection-start="1982" selection-end="1982" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -188,21 +278,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/res/EN_US.txt" />
+        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/commands/EZReload.java" />
+        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/spout/listeners/PlayerEvents.java" />
+        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/spout/listeners/VehicleEvents.java" />
+        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/coreManager.java" />
+        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/economy/EconomyManager.java" />
+        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/protection/protectionManager.java" />
+        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/rights/rightsManager.java" />
+        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/spout/spoutManager.java" />
+        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/PermissionsManager.java" />
+        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/permissionsManager.java" />
+        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/res/DE_DE.txt" />
         <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/res/FR_FR.txt" />
-        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/objects/spout/EpicZoneEcon.java" />
-        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/General.java" />
-        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/listeners/PlayerEvents.java" />
-        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/objects/EpicZone.java" />
-        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/integration/EconIntegration.java" />
-        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/objects/EpicZoneDAL.java" />
-        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/commands/EZZoneInfo.java" />
-        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/Util.java" />
-        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/objects/EpicZoneEcon.java" />
-        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/listeners/BlockEvents.java" />
-        <option value="$PROJECT_DIR$/plugin.yml" />
-        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/integration/PermissionsManager.java" />
-        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/integration/MetricsLite.java" />
+        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/objects/EpicZonePlayer.java" />
+        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/utilities/Globals.java" />
+        <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/utilities/Config.java" />
         <option value="$PROJECT_DIR$/src/com/randomappdev/EpicZones/EpicZones.java" />
       </list>
     </option>
@@ -239,6 +329,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -307,7 +407,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
+              <option name="myItemId" value="utilities" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -329,7 +429,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="objects" />
+              <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -351,40 +451,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="listeners" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EpicZones" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EpicZones" />
+              <option name="myItemId" value="modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="protection" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EpicZones" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="integration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -422,7 +494,17 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.randomappdev.EpicZones.modules.spout.listeners" />
+      <recent name="com.randomappdev.EpicZones.modules.herochat.listeners" />
+      <recent name="com.randomappdev.EpicZones.modules.rights.listeners" />
+      <recent name="com.randomappdev.EpicZones.modules.border.listeners" />
       <recent name="com.randomappdev.EpicZones.integration" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\modules\spout\listeners" />
+      <recent name="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\modules\economy\listeners" />
+      <recent name="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\modules\protection\listeners" />
+      <recent name="C:\Users\jblaske\Documents\Java Projects\EpicZones\src\com\randomappdev\EpicZones\modules\rights\listeners" />
     </key>
   </component>
   <component name="RunManager">
@@ -446,6 +528,24 @@
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
@@ -474,24 +574,6 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -592,26 +674,26 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1634" height="1066" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3289183" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3289183" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18322296" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.08343949" sideWeight="0.67108166" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1656051" sideWeight="0.67108166" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289183" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32636657" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -679,81 +761,143 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/objects/EpicZoneDAL.java">
+    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/spout/listeners/VehicleEvents.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="329" column="42" selection-start="12599" selection-end="12599" vertical-scroll-proportion="0.0" />
+        <state line="57" column="81" selection-start="2038" selection-end="2038" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/commands/EZZoneInfo.java">
+    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/border/borderManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="210" column="225" selection-start="9968" selection-end="9968" vertical-scroll-proportion="0.0" />
+        <state line="14" column="13" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/Util.java">
+    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/herochat/herochatManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="33" selection-start="2246" selection-end="2246" vertical-scroll-proportion="0.0" />
+        <state line="39" column="13" selection-start="1513" selection-end="1513" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/listeners/PlayerEvents.java">
+    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/rights/rightsManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="304" column="25" selection-start="11142" selection-end="11925" vertical-scroll-proportion="0.0" />
+        <state line="32" column="0" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/integration/EconIntegration.java">
+    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/protection/protectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="40" selection-start="1471" selection-end="1491" vertical-scroll-proportion="0.0" />
+        <state line="14" column="26" selection-start="582" selection-end="582" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugin.yml">
+    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/permissionsManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="26" selection-start="143" selection-end="143" vertical-scroll-proportion="0.14782609" />
+        <state line="44" column="19" selection-start="1499" selection-end="1499" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/listeners/BlockEvents.java">
+    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/economy/economyManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="0" selection-start="5668" selection-end="5668" vertical-scroll-proportion="0.0" />
+        <state line="17" column="23" selection-start="662" selection-end="662" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/integration/PermissionsManager.java">
+    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/res/EN_US.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="56" selection-start="1481" selection-end="1481" vertical-scroll-proportion="0.0" />
+        <state line="43" column="0" selection-start="1958" selection-end="2033" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/integration/MetricsLite.java">
+    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/res/FR_FR.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="75" selection-start="2099" selection-end="2099" vertical-scroll-proportion="0.0" />
+        <state line="44" column="0" selection-start="2297" selection-end="2297" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/commands/EZReload.java">
+    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/res/DE_DE.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="24" selection-start="1621" selection-end="1621" vertical-scroll-proportion="0.0" />
+        <state line="44" column="0" selection-start="2146" selection-end="2146" vertical-scroll-proportion="0.87281215">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/General.java">
+    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/coreManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="28" selection-start="2245" selection-end="2245" vertical-scroll-proportion="0.0" />
+        <state line="29" column="62" selection-start="1064" selection-end="1064" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/objects/EpicZone.java">
+    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/spout/spoutManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="448" column="16" selection-start="11464" selection-end="11464" vertical-scroll-proportion="0.0" />
+        <state line="48" column="13" selection-start="1982" selection-end="1982" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/objects/EpicZoneEcon.java">
+    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/modules/core/objects/EpicZonePlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="8" selection-start="448" selection-end="448" vertical-scroll-proportion="0.0" />
+        <state line="226" column="43" selection-start="5730" selection-end="5730" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/commands/EZZoneCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/utilities/Globals.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="13" selection-start="1629" selection-end="1629" vertical-scroll-proportion="0.0" />
+        <state line="64" column="52" selection-start="2553" selection-end="2553" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1791#1839#0" expanded="true" />
+            <element signature="e#2650#2659#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/utilities/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="149" column="14" selection-start="5231" selection-end="5231" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1329#1377#0" expanded="true" />
+            <element signature="e#2840#2870#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/randomappdev/EpicZones/EpicZones.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="38" selection-start="3957" selection-end="3957" vertical-scroll-proportion="0.49741825">
+        <state line="94" column="80" selection-start="3941" selection-end="3941" vertical-scroll-proportion="1.1788908">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3058#3106#0" expanded="true" />
+            <element signature="method#LoadMessageList#0;class#EpicZones#0" expanded="false" />
+            <element signature="method#InitMessageList#0;class#EpicZones#0" expanded="false" />
+            <element signature="method#BuildLanguageFiles#0;class#EpicZones#0" expanded="false" />
+            <element signature="method#BuildLanguageFile#0;class#EpicZones#0" expanded="false" />
+            <element signature="method#copyFile#0;class#EpicZones#0" expanded="false" />
+            <element signature="method#registerCommand#0;class#EpicZones#0" expanded="false" />
+            <element signature="method#onCommand#0;class#EpicZones#0" expanded="false" />
+            <element signature="method#registerCommands#0;class#EpicZones#0" expanded="false" />
           </folding>
         </state>
       </provider>
